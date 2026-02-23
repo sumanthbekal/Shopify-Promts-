@@ -1,0 +1,57 @@
+I am using the Minimog Shopify theme.
+Add a "Collections per row on mobile" setting to sections/collection-list.liquid.
+No CSS changes needed — only modify the Liquid file.
+
+Apply these 5 changes to sections/collection-list.liquid:
+
+──────────────────────────────────────
+CHANGE 1: Add variable (after "assign use_scroll_mobile = section.settings.use_scroll_mobile")
+──────────────────────────────────────
+Add this line:
+  assign mobile_items_per_row = section.settings.mobile_items_per_row | default: 3
+
+──────────────────────────────────────
+CHANGE 2: Add responsive image sizes capture
+──────────────────────────────────────
+Inside the m-mixed-layout__inner div, BEFORE the {% for block in section.blocks %} loop, add:
+
+  {%- capture sizes -%}
+    (min-width: 1024px) calc((100vw - 30px) / {{ section.settings.items_per_row }}), (min-width: 768px) calc((100vw - 30px) / {{ items_per_row_tablet }}), calc((100vw - 20px) / {{ mobile_items_per_row }})
+  {%- endcapture -%}
+
+──────────────────────────────────────
+CHANGE 3: Pass sizes to collection-card render
+──────────────────────────────────────
+In the {% render 'collection-card' %} call, add this parameter after animation_effect:
+  sizes: sizes
+
+──────────────────────────────────────
+CHANGE 4: Add CSS variables + data attribute
+──────────────────────────────────────
+On the m-collection-list__container div's style attribute, append:
+  --grid-columns-mobile: {{ mobile_items_per_row }}; --mobile-column-width: calc(100vw / {{ mobile_items_per_row }} - {{ mobile_items_per_row | times: 5 }}px)
+
+On the <m-collection-list> element, add this attribute (after data-mobile-hide-controls):
+  data-mobile-items="{{ mobile_items_per_row }}"
+
+──────────────────────────────────────
+CHANGE 5: Add schema setting
+──────────────────────────────────────
+In the {% schema %} JSON, under the "Mobile settings" header and BEFORE the "Disable slider" checkbox, add:
+
+    {
+      "type": "range",
+      "id": "mobile_items_per_row",
+      "label": "Collections per row on mobile",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+
+──────────────────────────────────────
+RULES:
+- Only modify sections/collection-list.liquid
+- Do NOT add any CSS to custom-style.css
+- Do NOT modify any .js or .css asset files
+- Apply all 5 changes in one shot

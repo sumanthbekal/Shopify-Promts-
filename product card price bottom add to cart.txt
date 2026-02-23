@@ -1,0 +1,27 @@
+Modify the existing Minimog theme product card layout without breaking theme logic.
+
+Requirement:
+- Move the "Quick Add" / "Select Options" button from image hover overlay to below the product price inside the product card.
+- Keep all existing functionality intact (AJAX add to cart, variant logic, quick view behavior).
+- Do NOT duplicate the button.
+- Do NOT remove existing Liquid logic.
+- Reuse the existing button snippet or render logic used by Minimog.
+- Keep full compatibility with swatches and variant selectors.
+- Maintain responsive design for mobile and desktop.
+
+Layout order inside product card:
+Product Image
+Product Title
+Rating (if enabled)
+Price
+Quick Add / Select Options button (always visible, not hover-based)
+
+Ensure:
+- Hover overlay button is hidden using CSS only (do not delete logic).
+- Button styling matches Minimog default button style.
+- Spacing between price and button is clean and balanced.
+- Button is full width inside the product card.
+
+Do not modify global cart or product form logic.
+Only adjust the product card snippet or section rendering the product grid.
+ 
