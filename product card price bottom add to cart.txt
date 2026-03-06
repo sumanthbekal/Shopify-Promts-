@@ -1,27 +1,23 @@
-Modify the existing Minimog theme product card layout without breaking theme logic.
+Task: Modify Minimog Shopify theme product card layout
 
-Requirement:
-- Move the "Quick Add" / "Select Options" button from image hover overlay to below the product price inside the product card.
-- Keep all existing functionality intact (AJAX add to cart, variant logic, quick view behavior).
-- Do NOT duplicate the button.
-- Do NOT remove existing Liquid logic.
-- Reuse the existing button snippet or render logic used by Minimog.
-- Keep full compatibility with swatches and variant selectors.
-- Maintain responsive design for mobile and desktop.
+Please apply the following changes to all product card snippets (e.g., 
 
-Layout order inside product card:
-Product Image
-Product Title
-Rating (if enabled)
-Price
-Quick Add / Select Options button (always visible, not hover-based)
+product-card-1.liquid
+ through 
 
-Ensure:
-- Hover overlay button is hidden using CSS only (do not delete logic).
-- Button styling matches Minimog default button style.
-- Spacing between price and button is clean and balanced.
-- Button is full width inside the product card.
+product-card-5.liquid
+):
 
-Do not modify global cart or product form logic.
-Only adjust the product card snippet or section rendering the product grid.
- 
+Relocate Quick Add Button: Move the "Quick Add" / "Select Options" button logic (which calls render 'product-card-quick-add-btn') from its current location in the image hover/footer and place it immediately below the product price inside the .m-product-card__info or .m-product-card__content container.
+Always Visible: Ensure the new button position is always visible and not dependent on hovering. Pass button_style: 'primary' to the render tag.
+Hide Old Icons (CSS): Add a <style> block at the top of the product card container (inside the div.m-product-card) to hide the original Add to Cart button and action wrappers in the media and footer areas using:
+css
+.m-product-card__media .m-product-card__action-wrapper,
+.m-product-card__content > .m-product-card__action-wrapper,
+.m-product-card__content-footer .m-product-card__action-wrapper,
+.m-product-card__media .m-product-card__atc-button,
+.m-product-card__content-footer .m-product-card__atc-button {
+  display: none !important;
+}
+Styling: Add a 15px top margin to the new button container (e.g., .m-product-card__quick-add-new) to ensure clean spacing below the price.
+Preserve Logic: Do not delete existing Liquid logic; only relocate the button render call and use CSS to hide the unwanted elements. Ensure all AJAX and variant selection functionality is maintained.
