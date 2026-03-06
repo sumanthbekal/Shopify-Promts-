@@ -1,0 +1,26 @@
+Task: Add Customizable Borders and Roundness to Product Cards
+
+Please implement the following enhancement for the product cards in the furnic theme:
+
+Add Settings in 
+
+config/settings_schema.json
+: In the "Product card" section, add a "Borders" header with three settings:
+pcard_show_border: Checkbox to toggle the border.
+pcard_border_color: Color picker (default: #eeeeee).
+pcard_border_radius: Range slider (0px to 50px, default: 0px) for corner roundness.
+Update 
+
+snippets/style-tags.liquid
+:
+Initialize assign pcard_radius = settings.pcard_border_radius | default: 0. If it's 0, fall back to existing corner radius logic.
+Under :root, expose --pcard-radius and --pcard-border-color as CSS variables.
+Add conditional CSS: When pcard_show_border is true, apply a 1px solid var(--pcard-border-color) border to .m-product-card.
+Ensure .m-product-card always has border-radius: var(--pcard-radius) and overflow: hidden.
+To prevent content from touching the border, add padding: 0 15px 15px !important to .m-product-card__content and margin-top: 15px !important to .m-product-card__info.
+Update 
+
+assets/product-image-rounded.css
+:
+Replace all hardcoded 10px values for border-radius with var(--pcard-radius) so the internal images and media match the card's custom roundness.
+Ensure all changes are applied globally across all product card styles.
