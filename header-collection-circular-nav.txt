@@ -1,0 +1,30 @@
+Task: Create a new Shopify section named 
+
+header-collection-circular-nav.liquid
+ by duplicating and modifying the Minimog theme's collection-list.liquid.
+
+Goal: A premium, ultra-compact category navigation bar with circular icons, designed for use in the header or as a quick-category menu.
+
+Section Architecture:
+
+Base Logic: Inherit all standard Minimog collection-list logic, blocks (collection_block), and JavaScript hooks.
+Visual Structure: Each item must feature a perfectly circular image/icon container with the collection title centered directly below it.
+Layout Requirements:
+
+Desktop: Items must sit in a tightly packed horizontal row, centered on the page. Use flexbox to override the standard theme grid for better grouping.
+Mobile: Items MUST stay in a single horizontal line with overflow-x: auto (swipe to scroll). Disable wrapping and hide the scrollbar for an app-style look.
+Compact Sizing: Force items to a maximum width (approx. 110px desktop / 90px mobile) and zero out all default container padding/margins to keep the section "low-profile."
+Custom Settings (Schema):
+
+Grid Control: Separate "Collections per row" sliders for Mobile and Desktop.
+Typography: Separate "Title font size" sliders for Desktop and Mobile (range 8px to 24px).
+Visuals: "Icon size" slider (px) and "Circle background color" picker.
+Spacing: Adjustable "Column gap" for the item spacing.
+Technical/CSS Rules:
+
+Scope all styles strictly to .section-header-collection-circular-nav to avoid breaking other theme sections.
+Use !important overrides for .m:column padding, height, and display properties to bypass Minimog's default grid stretching.
+Ensure the circular image has a smooth hover scale effect and a subtle translateY/shadow animation.
+Usage Tip:
+If you give this to me (or any AI) in a new chat, just pair it with a copy of your current collection-list.liquid file or the Nutra theme folder, and it will build the logic and styling perfectly in one shot!
+
