@@ -1,0 +1,20 @@
+Task: Add a Logo Option to the Footer Newsletter Block
+
+Goal: Modify the Minimog theme's footer to allow merchants to upload a logo specifically for the Newsletter block.
+
+1. Schema Update (sections/footer.liquid): Inside the blocks array, locate the block with type: "newsletter". Add the following two settings at the beginning of its settings array:
+
+Logo Image Picker: id: "logo", label: "Logo".
+Logo Width Range: id: "logo_max_width", label: "Logo max-width (px)", min: 20, max: 400, default: 100, unit: "px".
+2. Rendering Update (snippets/footer-blocks.liquid): Locate the {% when 'newsletter' %} case. Inside its main container div, but before the description (block.settings.description), insert the logo rendering logic:
+
+If block.settings.logo is not blank, render the image inside a div with the class m-footer--block-logo.
+Apply the max-width from block.settings.logo_max_width and add a bottom margin of 20px to the container for spacing.
+Ensure the image uses image_url and image_tag filters with loading: 'lazy' and the m:w-full class.
+3. Validation: Ensure the modified Liquid files pass theme syntax checks and that the JSON schema remains valid.
+
+Why this prompt works:
+
+It specifies the exact files to modify.
+It provides the logic flow (Schema first, then Snippet).
+It includes technical details like CSS classes and Shopify Liquid filters to ensure the code matches the Minimog design system.
