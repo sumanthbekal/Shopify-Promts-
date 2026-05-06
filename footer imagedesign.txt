@@ -1,0 +1,12 @@
+"Add a decorative bottom illustration to a footer section using a CSS-only injection method:
+
+Container Preparation: Set the main footer container to position: relative and overflow: hidden. Apply background: transparent !important to all internal theme blocks to ensure the custom section background remains visible.
+
+Pseudo-Element Layering: Use a CSS ::after pseudo-element on the main footer to host the artwork:
+
+Layout: Set position: absolute, bottom: 0, left: 0, and width: 100%. Use pointer-events: none so the image is non-interactive and doesn't block link clicks.
+Visual Blending: Apply a linear-gradient as the top layer of the background-image property. Transition it from the footer’s base color to transparent to seamlessly blend the top edge of the artwork into the section.
+Sizing: Set a specific height and use background-size: cover (for desktop) or 100% auto (for mobile) with background-position: bottom center.
+Content Buffer Logic: Identify the footer's bottom-most content block (copyright/socials) and apply a responsive margin-top. This creates a 'safe zone' for the illustration and prevents text from overlapping the artwork's focus points.
+
+Adaptive Logic: At mobile breakpoints (767px), swap the background-image for a mobile-optimized URL, adjust the pseudo-element height, and recalculate the content buffer to maintain visual balance." 
