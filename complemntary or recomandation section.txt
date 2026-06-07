@@ -1,0 +1,64 @@
+I am using the Minimog Shopify theme.
+
+Task:
+Move the existing "Complementary Products" section (currently rendered inside the Product Information block and connected to Shopify Search & Discovery recommendations) to a standalone section below the product information area.
+
+Requirements:
+
+1. Keep the Shopify Search & Discovery integration fully intact.
+   - Continue using the same complementary products source.
+   - Products should still be managed from Shopify Search & Discovery.
+   - Do not convert this into a manual collection or static product list.
+
+2. Create a new standalone section:
+   - Section name: "Complementary Products"
+   - Make it available in the Theme Editor.
+   - Allow merchants to reposition it anywhere on the product template.
+
+3. Copy the exact product card design used by Minimog:
+   - Same image ratio.
+   - Same hover effects.
+   - Same badges.
+   - Same price styling.
+   - Same sale price styling.
+   - Same wishlist button.
+   - Same quick add button.
+   - Same variant swatches.
+   - Same typography.
+   - Same spacing.
+   - Same card shadows and borders.
+   - Same responsive behavior.
+
+4. Preserve all existing product card functionality:
+   - Add to cart.
+   - Quick view.
+   - Wishlist.
+   - Product labels.
+   - Variant selectors.
+   - Inventory display.
+   - Dynamic pricing.
+
+5. Create a section heading:
+   - Default title: "Frequently Bought Together"
+   - Editable from Theme Editor.
+
+6. Desktop layout:
+   - 4 products per row.
+   - Horizontal slider when more than 4 products exist.
+
+7. Mobile layout:
+   - 2 products visible per slide.
+   - Swipe enabled.
+
+8. Performance:
+   - Reuse existing Minimog snippets and card components wherever possible.
+   - Avoid duplicating card code.
+   - Follow Minimog theme architecture and coding standards.
+
+9. Ensure updates to the main Minimog product card automatically reflect in this new complementary products section.
+
+Deliver:
+- New Shopify section file.
+- Required snippet modifications.
+- Schema settings.
+- Exact code changes and file locations.
